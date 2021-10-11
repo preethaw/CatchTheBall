@@ -37,10 +37,10 @@ function setup() {
 
   obstacle6 = new Box(320, 380, 280, 15);
 
-  invisibleHand = new Box(250, 480, 30, 30);
+  invisibleHand = new Box(100, 480, 30, 30);
 
   Matter.Body.setStatic(invisibleHand.body, false);
-  Matter.Body.setVelocity(invisibleHand.body, { x: -6, y: 0 });
+  Matter.Body.setVelocity(invisibleHand.body, { x: 5, y: 0 });
 }
 
 function draw() {
@@ -62,7 +62,14 @@ function draw() {
   
   if (gameState === "play") {
     movingHands();
+   // invisibleHand.display();
     showBall();
+    var posX = invisibleHand.body.position.x;
+    var posY = invisibleHand.body.position.y;
+
+    image(handsImg, posX - 42, posY - 55, 80, 80);
+    
+
   }
 
   if (lives === 0) {
@@ -137,17 +144,13 @@ function mousePressed() {
 function movingHands() {
 
 
-  var posX = invisibleHand.body.position.x;
-  var posY = invisibleHand.body.position.y;
-
-  image(handsImg, posX - 42, posY - 55, 80, 80);
-
-  if (invisibleHand.body.position.x >= 450) {
-    Matter.Body.setVelocity(invisibleHand.body, { x: -6, y: 0 });
+  
+  if (invisibleHand.body.position.x >= 445) {
+    Matter.Body.setVelocity(invisibleHand.body, { x: -5, y: 0 });
   }
 
   if (invisibleHand.body.position.x <= 50) {
-    Matter.Body.setVelocity(invisibleHand.body, { x: 6, y: 0 });
+    Matter.Body.setVelocity(invisibleHand.body, { x: 5, y: 0 });
   }
 
   Matter.Body.setPosition(invisibleHand.body, {
